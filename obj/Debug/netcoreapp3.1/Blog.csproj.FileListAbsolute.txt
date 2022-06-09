@@ -43,3 +43,4 @@ C:\Users\Carlos\Curso Técnico\UC07\Blog\obj\Debug\netcoreapp3.1\Blog.dll
 C:\Users\Carlos\Curso Técnico\UC07\Blog\obj\Debug\netcoreapp3.1\Blog.pdb
 C:\Users\Carlos\Curso Técnico\UC07\Blog\obj\Debug\netcoreapp3.1\Blog.genruntimeconfig.cache
 C:\Users\Carlos\Curso Técnico\UC07\Blog\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\Carlos\Curso Técnico\UC07\Blog\obj\Debug\netcoreapp3.1\Razor\Views\Post\Cadastro.cshtml.g.cs
