@@ -10,8 +10,8 @@ namespace Blog.Controllers
               return View();
           }
 
-          [HttpPost]
-          public IActionResult Cadastro(Post novoPost)
+        [HttpPost]
+        public IActionResult Cadastro(Post novoPost)
           {
             PostService service = new PostService();
             int novoId = service.CreatePost(novoPost);
@@ -25,6 +25,25 @@ namespace Blog.Controllers
             }
 
             return View();
-          }        
+          }
+
+        public IActionResult Lista()
+            {
+                PostService service = new PostService();
+                return View(service.GetPosts());
+            }
+
+        public IActionResult Lista(string q, string ordem)
+            {
+                PostService service = new PostService();
+
+                if(q == null)
+                q = String.Empty;
+          
+                if(ordem == null)
+                ordem = "t";
+
+                return View(service.GetPosts(q, ordem));
+            }
     }
 }
