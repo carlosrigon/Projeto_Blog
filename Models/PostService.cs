@@ -50,5 +50,31 @@ namespace Blog.Models
                     return registro;
                 }
             }
+        
+         public void UpdatePost(Post post)
+            {
+                using (var context = new BlogContext())
+                {
+                    Post registro = context.Posts.Find(post.Id);
+                    if(registro != null)
+                        {
+                            registro.Texto = post.Texto;
+                            registro.Titulo = post.Titulo;
+                            registro.Data = post.Data;
+
+                            context.SaveChanges();
+                        }
+                }
+            }
+        
+        public void DeletePost(int id)
+            {
+                using (var context = new BlogContext())
+                {   
+                    Post registro = context.Posts.Find(id);
+                    context.Posts.Remove(registro);
+                    context.SaveChanges();
+                }
+            }
     }
 }

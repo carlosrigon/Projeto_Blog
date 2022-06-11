@@ -14,14 +14,22 @@ namespace Blog.Controllers
         public IActionResult Cadastro(Post novoPost)
           {
             PostService service = new PostService();
-            int novoId = service.CreatePost(novoPost);
-            if(novoId != 0)
+            if(novoPost.Id != 0)
             {
+                service.UpdatePost(novoPost);
                 ViewData["Mensagem"] = "Cadastro realizado com sucesso";
             }
             else
             {
-                ViewData["Mensagem"] = "Falha no cadastro";
+                int novoId = service.CreatePost(novoPost);
+                if (novoId != 0)
+                {
+                    ViewData["Mensagem"] = "Cadastro realizado com sucesso";
+                }
+                else
+                {
+                    ViewData["Mensagem"] = "Falha no cadastro";
+                }
             }
 
             return View();
@@ -44,6 +52,34 @@ namespace Blog.Controllers
                 ordem = "t";
 
                 return View(service.GetPosts(q, ordem));
+            }
+        
+        public IActionResult Atualiza(int id)
+            {
+                PostService service = new PostService();
+                Post post = service.GetPostDetail(id);
+
+                return View("Cadastro", post);
+            }
+        
+        public IActionResult Exclui(int id)
+            {
+                PostService service = new PostService();
+                Post post = service.GetPostDetail(id);
+
+                return View(post);
+            }
+
+        [HttpPost]
+        public IActionResult Exclui(int id, string decisao)
+            {
+                if(decisao == "s")
+                {
+                    PostService service = new PostService();
+                    service.DeletePost(id);
+                }
+
+                return RedirectToAction("Lista");
             }
     }
 }

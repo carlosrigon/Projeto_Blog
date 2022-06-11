@@ -39,7 +39,7 @@
                     <td>@item.Titulo</td>
                     <td>@item.Data</td>
                     <td>@(item.Comentarios == null ? 0 : item.Comentarios.Count)</td>
-                    <td><a>Editar</a> | <a>Excluir</a></td>
+                    <td><a href="/Atualiza?id=@item.Id">Editar</a> | <a href="/Exclui?id=@item.Id">Excluir</a></td>
                 </tr>
             }
         </tbody>
