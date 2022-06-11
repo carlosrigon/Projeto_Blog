@@ -20,7 +20,9 @@ namespace Blog.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            PostService service = new PostService();
+      
+            return View(service.GetPosts("", ""));
         }
 
         public IActionResult Privacy()
